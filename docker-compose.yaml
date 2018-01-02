@@ -24,16 +24,27 @@ services:
   #   # command: bash -c "sleep 20 && mysql --user=origincert --password=nNzfI8D3 origincert < /db.sql"
   #   # command: /etc/init.d/mysql start && mysql --user=origincert --password=nNzfI8D3 </db.sql
 
-  postgres:
-    container_name: postgres
-    image: postgres
-    restart: always
+  # postgres:
+  #   container_name: postgres
+  #   image: postgres
+  #   restart: always
+  #   ports:
+  #     - "5432:5432"
+  #   # environment:
+  #   #   POSTGRES_PASSWORD: example
+  #   volumes:
+  #     - ./postgres/data:/var/lib/postgresql/data
+
+  mongo:
+    # container_name: postgres
+    image: mongo:latest
+    # restart: always
     ports:
-      - "5432:5432"
+      - "27017:27017"
     # environment:
     #   POSTGRES_PASSWORD: example
     volumes:
-      - ./postgres/data:/var/lib/postgresql/data
+      - ./mongodb/data:/data/db
 
   # jenkins:
   #   container_name: local_jenkins
