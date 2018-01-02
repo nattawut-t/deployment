@@ -1,0 +1,63 @@
+version: "3.1"
+services:
+  # mariadb:
+  #   container_name: local_db
+  #   image: mariadb
+  #   # build:
+  #   #   context: ./mariadb
+  #   #   dockerfile: Dockerfile
+  #   restart: always
+  #   ports:
+  #     - "3306:3306"
+  #   environment:
+  #     MYSQL_ROOT_PASSWORD: root
+  #     MYSQL_USER: origincert
+  #     MYSQL_PASSWORD: nNzfI8D3
+  #     MYSQL_DATABASE: origincert
+  #   volumes:
+  #     - ./mariadb/data:/var/lib/mysql
+  #     - ./mariadb/data/my.cnf:/etc/mysql/my.cnf
+  #     # - ./mariadb/setup.sql:/docker-entrypoint-initdb.d
+  #     # - ../db.sql:/db.sql
+  #   # command: ../connect.sh
+  #   # command: bash -c "sleep 20 && mysql --user=origincert --password=nNzfI8D3 origincert <db.sql"
+  #   # command: bash -c "sleep 20 && mysql --user=origincert --password=nNzfI8D3 origincert < /db.sql"
+  #   # command: /etc/init.d/mysql start && mysql --user=origincert --password=nNzfI8D3 </db.sql
+
+  postgres:
+    container_name: postgres
+    image: postgres
+    restart: always
+    ports:
+      - "5432:5432"
+    # environment:
+    #   POSTGRES_PASSWORD: example
+    volumes:
+      - ./postgres/data:/var/lib/postgresql/data
+
+  # jenkins:
+  #   container_name: local_jenkins
+  #   # image: jenkins:2.60.3
+  #   build:
+  #     context: ./jenkins
+  #     dockerfile: Dockerfile
+  #   ports:
+  #     - "8081:8080"
+  #     - "50000:50000"
+  #   # restart: always
+  #   # environment:
+  #   volumes:
+  #     - ./jenkins/data:/var/jenkins_home
+
+  # leveldb:
+  #   container_name: local_leveldb
+  #   image: ekristen/leveldb
+  #   # build:
+  #   #   context: ./jenkins
+  #   #   dockerfile: Dockerfile
+  #   ports:
+  #     - "2012:2012"
+  #   # restart: always
+  #   # environment:
+  #   volumes:
+  #     - ./leveldb/data:/opt/app/db
